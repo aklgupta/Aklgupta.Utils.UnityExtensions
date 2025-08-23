@@ -10,12 +10,15 @@ namespace Aklgupta.Utils.UnityExtensions {
 			Debug.Log($"Ext [{source.GetType().Name}] : {obj}", source as Object);
 		}
 
+		[Conditional("UNITY_EDITOR")]
 		public static void LogWarning(this object source, object obj) {
 			Debug.LogWarning($"Ext [{source.GetType().Name}] : {obj}", source as Object);
 		}
 
+		[Conditional("UNITY_EDITOR")]
 		public static void LogError(this object source, object obj) {
 			Debug.LogError($"Ext [{source.GetType().Name}] : {obj}", source as Object);
 		}
+
 	}
 }
