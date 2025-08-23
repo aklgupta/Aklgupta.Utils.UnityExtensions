@@ -1,0 +1,10 @@
+{
+  "name": "com.aklgupta.utils",
+  "version": "0.0.0",
+  "displayName": "Custom Utils",
+  "description": "Custom Unity Utils",
+  "unity": "2017.0",
+  "author": {
+    "name": "Akhil Gupta"
+  }
+}
