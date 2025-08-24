@@ -38,7 +38,7 @@ namespace Aklgupta.Utils.Logger {
 				prefixes.Add(source.GetType().Name);
 
 
-			return prefixes.Count > 0 ? $"{string.Join(",", prefixes.Select(x => $"[{x}]"))} : " : "";
+			return prefixes.Count > 0 ? $"{string.Join(" ", prefixes.Select(x => $"[{x}]"))} : " : "";
 		}
 
 	}
