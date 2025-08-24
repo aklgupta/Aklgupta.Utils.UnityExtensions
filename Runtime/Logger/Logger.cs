@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace Aklgupta.Utils.Logger {
 	public static class Logger {
+
+		public static bool perfixSourceType = true;
 
 		[Conditional("UNITY_EDITOR")]
 		[Conditional("DEBUG_LOG")]
@@ -27,7 +31,13 @@ namespace Aklgupta.Utils.Logger {
 		}
 
 		private static string GetPrefix(object source) {
-			return $"[{source.GetType().Name}] : ";
+			var prefixes = new List<string>();
+
+			if (perfixSourceType)
+				prefixes.Add(source.GetType().Name);
+
+			
+			return prefixes.Count > 0 ? $"{string.Join(",", prefixes.Select(x => $"[{x}]"))} : " : "";
 		}
 
 	}
