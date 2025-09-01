@@ -50,43 +50,24 @@ namespace Aklgupta.Utils.PropertyDrawers {
 
 				switch (Type.GetTypeCode(type)) {
 					case TypeCode.Boolean:
-						var toggle = new Toggle {
-							label = fieldName,
-							value = (bool)value,
-							enabledSelf = false,
-						};
+						var toggle = new Toggle { label = fieldName, value = (bool)value, enabledSelf = false };
 						foldout.Add(toggle);
 						elements.Add(toggle, fieldName);
 						break;
-					case TypeCode.DateTime or TypeCode.Char or TypeCode.String or TypeCode.Decimal or TypeCode.Double or TypeCode.Single
-						or TypeCode.Byte or TypeCode.SByte or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64 or TypeCode.UInt16
-						or TypeCode.UInt32 or TypeCode.UInt64:
-					{
-						elements.Add(CreateTextField(fieldName, value.ToString()), fieldName);
-						break;
-					}
 					case TypeCode.Object:
-						switch (value) {
-							case Object o:
-								var objectField = new ObjectField {
-									label = fieldName,
-									value = o,
-									enabledSelf = false,
-								};
-								foldout.Add(objectField);
-								elements.Add(objectField, fieldName);
-								break;
-							default:
-								if (value == null)
-									elements.Add(CreateTextField(fieldName, "null", true), fieldName);
-								else
-									elements.Add(CreateTextField(fieldName, value.ToString()), fieldName);
-
-								break;
+						if (value is Object o) {
+							var objectField = new ObjectField { label = fieldName, value = o, enabledSelf = false };
+							foldout.Add(objectField);
+							elements.Add(objectField, fieldName);
 						}
+						else if (value == null)
+							elements.Add(CreateTextField(fieldName, "null", true), fieldName);
+						else
+							elements.Add(CreateTextField(fieldName, value.ToString()), fieldName);
 						break;
 					default:
-						throw new ArgumentOutOfRangeException();
+						elements.Add(CreateTextField(fieldName, value.ToString()), fieldName);
+						break;
 				}
 			}
 
