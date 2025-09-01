@@ -55,8 +55,8 @@ namespace Aklgupta.Utils.PropertyDrawers {
 						elements.Add(toggle, fieldName);
 						break;
 					case TypeCode.Object:
-						if (value is Object o) {
-							var objectField = new ObjectField { label = fieldName, value = o, enabledSelf = false };
+						if (value is Object || type.IsSubclassOf(typeof(Object))) {
+							var objectField = new ObjectField { label = fieldName, value = value as Object, enabledSelf = false };
 							foldout.Add(objectField);
 							elements.Add(objectField, fieldName);
 						}
@@ -98,6 +98,15 @@ namespace Aklgupta.Utils.PropertyDrawers {
 			pollingRunning = true;
 			while (pollingRunning) {
 				await Task.Delay(100);
+				foreach (var (ele, name) in elements) {
+					GetFieldInfo(name, out _, out var value);
+					if (ele is Toggle toggle) {
+						toggle.value = (bool)value;
+					}
+					else if (ele is ObjectField objField) {
+						objField.value = (Object)value;
+					}
+				}
 			}
 		}
 
