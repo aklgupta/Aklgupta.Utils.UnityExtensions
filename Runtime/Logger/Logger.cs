@@ -8,6 +8,7 @@ using Debug = UnityEngine.Debug;
 namespace Aklgupta.Utils.Logger {
 	public static class Logger {
 
+		public static bool PrefixObjectName { get; set; } = true;
 		public static bool PrefixSourceType { get; set; } = true;
 
 		[Conditional("UNITY_EDITOR")]
@@ -57,7 +58,7 @@ namespace Aklgupta.Utils.Logger {
 		private static string GetPrefix() {
 			var prefixes = new List<string>();
 
-			if (PrefixSourceType)
+			if (PrefixObjectName || PrefixSourceType)
 				prefixes.Add("<i>null</i>");
 
 
@@ -67,9 +68,11 @@ namespace Aklgupta.Utils.Logger {
 		private static string GetPrefix(object source) {
 			var prefixes = new List<string>();
 
+			if(PrefixObjectName && source is Object o)
+				prefixes.Add(o.name);
+			
 			if (PrefixSourceType)
 				prefixes.Add(source.GetType().Name);
-
 
 			return prefixes.Count > 0 ? $"{string.Join(" ", prefixes.Select(x => $"[{x}]"))} : " : null;
 		}
