@@ -38,6 +38,6 @@ namespace Aklgupta.Utils.CommonExtensions {
 			Logger.Logger.LogWarningStatic($"x should be less than y, reversing the values ({vector2})");
 			return Random.Range(vector2.y, vector2.x);
 		}
-		
+
 	}
 }
