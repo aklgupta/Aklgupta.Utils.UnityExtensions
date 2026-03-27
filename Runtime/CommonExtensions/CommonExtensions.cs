@@ -27,7 +27,7 @@ namespace Aklgupta.Utils.CommonExtensions {
 			if (vector2.x < vector2.y)
 				return Random.Range(vector2.x, vector2.y);
 
-			Logger.Logger.LogWarningStatic($"x should be less than y, reversing the values ({vector2})");
+			Logger.Logger.LogWarning($"x should be less than y, reversing the values ({vector2})");
 			return Random.Range(vector2.y, vector2.x);
 		}
 
@@ -35,7 +35,7 @@ namespace Aklgupta.Utils.CommonExtensions {
 			if (vector2.x < vector2.y)
 				return Random.Range(vector2.x, vector2.y);
 
-			Logger.Logger.LogWarningStatic($"x should be less than y, reversing the values ({vector2})");
+			Logger.Logger.LogWarning($"x should be less than y, reversing the values ({vector2})");
 			return Random.Range(vector2.y, vector2.x);
 		}
 

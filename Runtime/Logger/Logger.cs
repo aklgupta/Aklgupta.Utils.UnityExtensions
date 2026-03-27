@@ -13,14 +13,14 @@ namespace Aklgupta.Utils.Logger {
 
 		[Conditional("UNITY_EDITOR")]
 		[Conditional("DEBUG_LOG")]
-		public static void LogStatic(object message) {
+		public static void Log(object message) {
 			Debug.Log($"{GetPrefix()}{message}");
 		}
 
 		[Conditional("UNITY_EDITOR")]
 		[Conditional("DEBUG_LOG")]
 		[Conditional("DEBUG_LOG_WARNING")]
-		public static void LogWarningStatic(object message) {
+		public static void LogWarning(object message) {
 			Debug.LogWarning($"{GetPrefix()}{message}");
 		}
 
@@ -28,7 +28,7 @@ namespace Aklgupta.Utils.Logger {
 		[Conditional("DEBUG_LOG")]
 		[Conditional("DEBUG_LOG_WARNING")]
 		[Conditional("DEBUG_LOG_ERROR")]
-		public static void LogErrorStatic(object message) {
+		public static void LogError(object message) {
 			Debug.LogError($"{GetPrefix()}{message}");
 		}
 
