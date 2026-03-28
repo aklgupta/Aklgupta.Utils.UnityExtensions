@@ -6,6 +6,11 @@ using Random = UnityEngine.Random;
 namespace Aklgupta.Utils.CommonExtensions {
 	public static class CommonExtensions {
 
+		public static float RoundTo(this float val, uint decimalPlaces = 2) {
+			var mul = Mathf.Pow(10f, decimalPlaces);
+			return Mathf.Round(val * mul) / mul;
+		}
+
 		public static T RandomValue<T>(this IList<T> list) {
 			if (list == null)
 				throw new ArgumentNullException(nameof(list), "Can't get random element from null");
