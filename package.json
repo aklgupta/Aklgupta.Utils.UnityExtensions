@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "displayName": "Aklgupta - Unity Utilities",
   "description": "Common Unity Utilities",
-  "unity": "2017.0",
+  "unity": "2021.3",
   "dependencies" : {},
   "author": {
     "name": "Akhil Gupta"
